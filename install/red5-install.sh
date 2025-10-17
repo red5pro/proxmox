@@ -5,7 +5,14 @@
 # License: MIT | https://github.com/red5pro/proxmox/raw/main/LICENSE
 # Source: https://github.com/red5pro/proxmox
 
-source /dev/stdin <<< "$FUNCTIONS_FILE_PATH"
+# Source install functions from FUNCTIONS_FILE_PATH or fetch directly
+if [ -n "$FUNCTIONS_FILE_PATH" ]; then
+  source /dev/stdin <<< "$FUNCTIONS_FILE_PATH"
+else
+  # Fetch functions directly if not provided
+  source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/install.func)
+fi
+
 color
 verb_ip6
 catch_errors
