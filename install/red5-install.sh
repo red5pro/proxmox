@@ -58,9 +58,15 @@ fi
 msg_info "Downloading Red5 Pro Server from custom URL"
 msg_info "Download URL: $RED5PRO_DOWNLOAD_URL"
 cd /tmp
-if ! wget -O red5pro-server.zip "$RED5PRO_DOWNLOAD_URL" 2>&1; then
+# Use wget with better timeout and retry settings
+if ! wget --timeout=30 --tries=3 --retry-connrefused -O red5pro-server.zip "$RED5PRO_DOWNLOAD_URL" 2>&1; then
     msg_error "Failed to download Red5 Pro Server"
-    msg_info "Please check that the URL is accessible and correct"
+    msg_info "Error details above - common issues:"
+    msg_info "  - Download link may have expired (generate a new one from account.red5.net)"
+    msg_info "  - Network connectivity issues"
+    msg_info "  - Server is temporarily unavailable (504 Gateway Timeout)"
+    msg_info ""
+    msg_info "Alternative: Host the zip file yourself and use that URL"
     exit 1
 fi
 msg_ok "Downloaded Red5 Pro Server"
