@@ -1,4 +1,50 @@
 #!/usr/bin/env bash
+
+# Parse command-line arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --license)
+      export RED5PRO_LICENSE_KEY="$2"
+      shift 2
+      ;;
+    --download-url)
+      export RED5PRO_DOWNLOAD_URL="$2"
+      shift 2
+      ;;
+    --ssl-domain)
+      export RED5PRO_SSL_DOMAIN="$2"
+      shift 2
+      ;;
+    --ssl-email)
+      export RED5PRO_SSL_EMAIL="$2"
+      shift 2
+      ;;
+    --verbose)
+      export var_verbose="yes"
+      shift
+      ;;
+    --help)
+      echo "Usage: $0 [OPTIONS]"
+      echo ""
+      echo "Required options:"
+      echo "  --license KEY              Red5 Pro license key"
+      echo "  --download-url URL         URL to download Red5 Pro server zip"
+      echo ""
+      echo "Optional options:"
+      echo "  --ssl-domain DOMAIN        Domain name for SSL certificate"
+      echo "  --ssl-email EMAIL          Email for Let's Encrypt notifications"
+      echo "  --verbose                  Enable verbose output"
+      echo "  --help                     Show this help message"
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $1"
+      echo "Use --help to see available options"
+      exit 1
+      ;;
+  esac
+done
+
 source <(curl -fsSL https://raw.githubusercontent.com/red5pro/proxmox/main/misc/build.func)
 # Copyright (c) 2025 mondain
 # Author: Paul Gregoire (mondain)

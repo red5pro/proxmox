@@ -37,40 +37,50 @@ This repository provides Proxmox helper scripts that automate the deployment of 
 
 ### Quick Start
 
-Run the following command on your Proxmox host:
+Run the following command on your Proxmox host with the required parameters:
 
 ```bash
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh)"
+bash <(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh) \
+  --license "your-license-key" \
+  --download-url "https://your-server.com/path/to/red5pro-server.zip"
 ```
 
-### Required Environment Variables
-
-Before running the installation, set these environment variables:
+### Command-Line Parameters
 
 **Required:**
-- `RED5PRO_LICENSE_KEY` - Your Red5 Pro license key (obtain from https://account.red5.net/)
-- `RED5PRO_DOWNLOAD_URL` - Direct URL to download the Red5 Pro server zip file
+- `--license KEY` - Your Red5 Pro license key (obtain from https://account.red5.net/)
+- `--download-url URL` - Direct URL to download the Red5 Pro server zip file
 
-**Optional (for SSL):**
-- `RED5PRO_SSL_DOMAIN` - Your domain name (e.g., red5.example.com)
-- `RED5PRO_SSL_EMAIL` - Email address for Let's Encrypt notifications
+**Optional:**
+- `--ssl-domain DOMAIN` - Your domain name (e.g., red5.example.com)
+- `--ssl-email EMAIL` - Email address for Let's Encrypt notifications
+- `--verbose` - Enable verbose output for debugging
+- `--help` - Show help message
 
 ### Installation Examples
 
 **Basic Installation (no SSL):**
 ```bash
-export RED5PRO_LICENSE_KEY="your-license-key-here"
-export RED5PRO_DOWNLOAD_URL="https://your-server.com/path/to/red5pro-server.zip"
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh)"
+bash <(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh) \
+  --license "your-license-key-here" \
+  --download-url "https://your-server.com/path/to/red5pro-server.zip"
 ```
 
 **Installation with SSL:**
 ```bash
-export RED5PRO_LICENSE_KEY="ABC123-DEF456-GHI789"
-export RED5PRO_DOWNLOAD_URL="https://files.example.com/red5pro-server-11.0.0.zip"
-export RED5PRO_SSL_DOMAIN="red5.example.com"
-export RED5PRO_SSL_EMAIL="admin@example.com"
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh)"
+bash <(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh) \
+  --license "ABC123-DEF456-GHI789" \
+  --download-url "https://files.example.com/red5pro-server-11.0.0.zip" \
+  --ssl-domain "red5.example.com" \
+  --ssl-email "admin@example.com"
+```
+
+**Installation with Verbose Output (for debugging):**
+```bash
+bash <(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh) \
+  --license "your-license-key" \
+  --download-url "https://your-server.com/path/to/red5pro-server.zip" \
+  --verbose
 ```
 
 ### Container Configuration
