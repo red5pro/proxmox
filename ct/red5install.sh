@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/build.func)
+source <(curl -fsSL https://raw.githubusercontent.com/red5pro/proxmox/main/misc/build.func)
 # Copyright (c) 2025 mondain
 # Author: Paul Gregoire (mondain)
-# License: MIT | https://github.com/community-scripts/ProxmoxVE/raw/main/LICENSE
+# License: MIT | https://github.com/red5pro/proxmox/raw/main/LICENSE
 # Source: https://github.com/red5pro/proxmox
 
 APP="Red5 Pro Server"
