@@ -97,7 +97,7 @@ During installation, you can choose:
 - **RAM**: 4096 MB (4 GB)
 - **Disk**: 4 GB
 - **OS**: Ubuntu 24.04
-- **Type**: Unprivileged container
+- **Type**: Privileged container
 - **Category**: Media
 
 ## Network Ports

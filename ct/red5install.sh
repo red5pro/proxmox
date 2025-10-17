@@ -59,7 +59,7 @@ var_ram="${var_ram:-4096}"
 var_disk="${var_disk:-4}"
 var_os="${var_os:-ubuntu}"
 var_version="${var_version:-24.04}"
-var_unprivileged="${var_unprivileged:-1}"
+var_unprivileged="${var_unprivileged:-0}"
 
 header_info "$APP"
 variables
