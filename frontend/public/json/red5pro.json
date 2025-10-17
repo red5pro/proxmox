@@ -1,0 +1,56 @@
+{
+  "name": "Red5 Pro Server",
+  "slug": "red5pro",
+  "categories": [
+    "media",
+    "streaming"
+  ],
+  "date_created": "2025-01-17",
+  "type": "ct",
+  "updateable": true,
+  "privileged": false,
+  "interface_port": 5080,
+  "documentation": "https://www.red5.net/docs/",
+  "website": "https://www.red5.net/",
+  "logo": "https://www.red5.net/wp-content/uploads/2020/06/red5pro-logo.png",
+  "description": "Red5 Pro is a real-time streaming server for live video and audio streaming. It supports WebRTC, RTMP, RTSP, HLS and SRT protocols for ultra-low latency streaming applications.",
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "bash -c \"$(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh)\"",
+      "resources": {
+        "cpu": "4",
+        "ram": "4096",
+        "hdd": "4",
+        "os": "debian",
+        "version": "12"
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": null,
+    "password": null
+  },
+  "notes": [
+    {
+      "type": "warning",
+      "text": "Red5 Pro requires a valid license key from https://account.red5.net/ - You will be prompted for your license key during installation."
+    },
+    {
+      "type": "info",
+      "text": "You will need to provide either: 1) Red5.net account credentials to download from red5.net, or 2) A custom URL where you have hosted the Red5 Pro server zip file."
+    },
+    {
+      "type": "info",
+      "text": "Optional: Configure Let's Encrypt SSL during installation for HTTPS/RTMPS support. You'll need a domain name pointing to your server and ports 80/443 accessible from the internet."
+    },
+    {
+      "type": "info",
+      "text": "Red5 Pro requires Java 21 (automatically installed). Default ports: 5080 (HTTP), 443 (HTTPS), 1935 (RTMP), 8554 (RTSP), 8443 (RTMPS), 40000-65535 (WebRTC/UDP)."
+    },
+    {
+      "type": "info",
+      "text": "For production deployments, ensure adequate CPU and RAM resources. Recommended: 4+ CPU cores, 4GB+ RAM for moderate streaming workloads."
+    }
+  ]
+}
