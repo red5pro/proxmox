@@ -1,29 +1,25 @@
 Before starting your install, you will need your Red5 Pro Server license and the download URL.
-Open up a notepad and paste the following nine (9) lines:
+Open up a notepad and paste the following five (5) lines:
 
-# Your Red5 Pro license key - required
-export RED5PRO_LICENSE_KEY=
-# The URL to download Red5 Pro zip file - required
-export RED5PRO_DOWNLOAD_URL=
-# Your Domain for SSL certificate - this is optional
-export RED5PRO_SSL_DOMAIN=
-# Your Email for Let's Encrypt notifications - optional unless the ssl domain is specified
-export RED5PRO_SSL_EMAIL=
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh)"
+bash <(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh) \
+  --license "RED5PRO_LICENSE_KEY" \
+  --download-url "RED5PRO_DOWNLOAD_URL" \
+  --ssl-domain "Your SSL Domain - Optional" \
+  --ssl-email "Your Email address for SSL - Optional"
 
 Now log into your account on https://account.red5.net/ and locate "Server License"
 Copy the key string and paste it as your RED5PRO_LICENSE_KEY
 Now proceed to "Downloads", find the link under "Download the latest Red5 Pro Server", it may resemble this "Red5 Pro Server 14.3.1", right click and select "Copy link address", paste the contents as RED5PRO_DOWNLOAD_URL
-Add your domain and email if you are using SSL
+Add your domain and email if you are using SSL, otherwise don't include the two lines
 
 Log into your Proxmox server
 Select your datacenter
 Select Shell
 Paste the lines from your notepad file and press enter (example below):
 
-export RED5PRO_LICENSE_KEY=2O49-7B8A-88SL-2912
-export RED5PRO_DOWNLOAD_URL=https://account.red5.net/download-server/red5pro-server-us-afeb3ef0a20-68.zip
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh)"
+bash <(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh) \
+  --license "2O49-7B8A-88SL-2912" \
+  --download-url "https://account.red5.net/download-server/red5pro-server-us-afeb3ef0a20-68.zip"
 
 Select Advanced Settings
 Select Privileged
