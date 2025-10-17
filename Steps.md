@@ -1,19 +1,28 @@
-Before starting your install, you will need your Red5 Pro Server license and the download URL. Log into your account on https://account.red5.net/
-and locate "Server License", copy the key string and save it for later. Now proceed to "Downloads", find the link under "Download the latest Red5 Pro Server", it may resemble this "Red5 Pro Server 14.3.1", right click and select "Copy link address", paste the contents where you saved your license string, you'll need both later. 
+Before starting your install, you will need your Red5 Pro Server license and the download URL.
+Open up a notepad and paste the following nine (9) lines:
 
-RED5PRO_LICENSE_KEY (required) - Your Red5 Pro license key
-RED5PRO_DOWNLOAD_URL (required) - URL to download Red5 Pro zip file
-RED5PRO_SSL_DOMAIN (optional) - Domain for SSL certificate
-RED5PRO_SSL_EMAIL (optional) - Email for Let's Encrypt notifications
+# Your Red5 Pro license key - required
+export RED5PRO_LICENSE_KEY=
+# The URL to download Red5 Pro zip file - required
+export RED5PRO_DOWNLOAD_URL=
+# Your Domain for SSL certificate - this is optional
+export RED5PRO_SSL_DOMAIN=
+# Your Email for Let's Encrypt notifications - optional unless the ssl domain is specified
+export RED5PRO_SSL_EMAIL=
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh)"
 
-2049-7684-8851-2985
-https://account.red5.net/download-server/red5pro-server-us-a3f390d88e-68.zip
+Now log into your account on https://account.red5.net/ and locate "Server License"
+Copy the key string and paste it as your RED5PRO_LICENSE_KEY
+Now proceed to "Downloads", find the link under "Download the latest Red5 Pro Server", it may resemble this "Red5 Pro Server 14.3.1", right click and select "Copy link address", paste the contents as RED5PRO_DOWNLOAD_URL
+Add your domain and email if you are using SSL
 
 Log into your Proxmox server
 Select your datacenter
 Select Shell
-Paste the script line from our github and press enter: 
+Paste the lines from your notepad file and press enter (example below):
 
+export RED5PRO_LICENSE_KEY=2O49-7B8A-88SL-2912
+export RED5PRO_DOWNLOAD_URL=https://account.red5.net/download-server/red5pro-server-us-afeb3ef0a20-68.zip
 bash -c "$(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh)"
 
 Select Advanced Settings
