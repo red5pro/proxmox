@@ -56,8 +56,13 @@ if [[ -z "$RED5PRO_DOWNLOAD_URL" ]]; then
 fi
 
 msg_info "Downloading Red5 Pro Server from custom URL"
+msg_info "Download URL: $RED5PRO_DOWNLOAD_URL"
 cd /tmp
-$STD wget -O red5pro-server.zip "$RED5PRO_DOWNLOAD_URL"
+if ! wget -O red5pro-server.zip "$RED5PRO_DOWNLOAD_URL" 2>&1; then
+    msg_error "Failed to download Red5 Pro Server"
+    msg_info "Please check that the URL is accessible and correct"
+    exit 1
+fi
 msg_ok "Downloaded Red5 Pro Server"
 
 msg_info "Installing Red5 Pro Server"
