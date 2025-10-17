@@ -35,10 +35,7 @@ $STD apt-get install -y \
 msg_ok "Installed Dependencies"
 
 msg_info "Installing Java 21"
-# Add Debian backports repository for Java 21
-echo "deb http://deb.debian.org/debian bookworm-backports main" > /etc/apt/sources.list.d/backports.list
-$STD apt-get update
-$STD apt-get install -y -t bookworm-backports openjdk-21-jdk
+$STD apt-get install -y openjdk-21-jdk
 msg_ok "Installed Java 21"
 
 # Check for required environment variables

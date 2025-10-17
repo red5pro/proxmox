@@ -96,7 +96,7 @@ During installation, you can choose:
 - **CPU**: 4 cores
 - **RAM**: 4096 MB (4 GB)
 - **Disk**: 4 GB
-- **OS**: Debian 12
+- **OS**: Ubuntu 24.04
 - **Type**: Unprivileged container
 - **Category**: Media
 
