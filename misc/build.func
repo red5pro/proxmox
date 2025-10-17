@@ -1342,7 +1342,12 @@ EOF'
   fi
   msg_ok "Customized LXC Container"
 
-  lxc-attach -n "$CTID" -- bash -c "$(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/install/${var_install}.sh)"
+  # Use INSTALL_SCRIPT_URL if provided, otherwise use default community-scripts URL
+  if [ -n "${INSTALL_SCRIPT_URL}" ]; then
+    lxc-attach -n "$CTID" -- bash -c "$(curl -fsSL ${INSTALL_SCRIPT_URL})"
+  else
+    lxc-attach -n "$CTID" -- bash -c "$(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/install/${var_install}.sh)"
+  fi
 }
 
 # This function sets the description of the container.

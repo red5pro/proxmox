@@ -39,7 +39,7 @@ function update_script() {
     msg_ok "Service stopped"
 
     fetch_and_deploy_gh_release "red5pro" "red5pro/proxmox" "prebuild" "latest" "/usr/local/red5pro" "red5pro-server-*-release.zip"
-    
+
     msg_info "Starting service"
     systemctl start red5pro
     msg_ok "Service started"
@@ -54,11 +54,6 @@ function update_script() {
 start
 build_container
 description
-
-msg_info "Setting up Container"
-msg_info "Installing Red5 Pro Server"
-$STD pct exec $CTID -- bash -c "$(wget -qLO - ${INSTALL_SCRIPT_URL})"
-msg_ok "Installed Red5 Pro Server"
 
 msg_ok "Completed Successfully!\n"
 echo -e "${CREATING}${GN}${APP} setup has been successfully initialized!${CL}"
