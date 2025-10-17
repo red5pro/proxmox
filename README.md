@@ -43,27 +43,43 @@ Run the following command on your Proxmox host:
 bash -c "$(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh)"
 ```
 
-### Installation Prompts
+### Required Environment Variables
 
-During installation, you will be prompted for:
+Before running the installation, set these environment variables:
 
-1. **Container Configuration** (optional - use defaults or customize):
-   - CPU cores (default: 4)
-   - RAM allocation (default: 4096 MB)
-   - Disk size (default: 4 GB)
-   - Network settings
+**Required:**
+- `RED5PRO_LICENSE_KEY` - Your Red5 Pro license key (obtain from https://account.red5.net/)
+- `RED5PRO_DOWNLOAD_URL` - Direct URL to download the Red5 Pro server zip file
 
-2. **Red5 Pro License Key** (required):
-   - Obtain from https://account.red5.net/
+**Optional (for SSL):**
+- `RED5PRO_SSL_DOMAIN` - Your domain name (e.g., red5.example.com)
+- `RED5PRO_SSL_EMAIL` - Email address for Let's Encrypt notifications
 
-3. **Download Method** (required):
-   - Option 1: Download from red5.net (requires account credentials - currently placeholder)
-   - Option 2: Custom URL (recommended - provide direct link to Red5 Pro zip file)
+### Installation Examples
 
-4. **SSL Configuration** (optional):
-   - Enable Let's Encrypt SSL certificate
-   - Domain name
-   - Email address for notifications
+**Basic Installation (no SSL):**
+```bash
+export RED5PRO_LICENSE_KEY="your-license-key-here"
+export RED5PRO_DOWNLOAD_URL="https://your-server.com/path/to/red5pro-server.zip"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh)"
+```
+
+**Installation with SSL:**
+```bash
+export RED5PRO_LICENSE_KEY="ABC123-DEF456-GHI789"
+export RED5PRO_DOWNLOAD_URL="https://files.example.com/red5pro-server-11.0.0.zip"
+export RED5PRO_SSL_DOMAIN="red5.example.com"
+export RED5PRO_SSL_EMAIL="admin@example.com"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/red5pro/proxmox/main/ct/red5install.sh)"
+```
+
+### Container Configuration
+
+During installation, you can choose:
+
+1. **Default Settings** - Automated installation with optimal defaults
+2. **Advanced Settings** - Customize CPU, RAM, disk, network, etc.
+3. **Config File** - Use a previously saved configuration
 
 ## Default Container Specifications
 
