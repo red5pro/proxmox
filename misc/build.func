@@ -1344,8 +1344,8 @@ EOF'
 
   # Use INSTALL_SCRIPT_URL if provided, otherwise use default community-scripts URL
   if [ -n "${INSTALL_SCRIPT_URL}" ]; then
-    # Export Red5 Pro environment variables into the container
-    lxc-attach -n "$CTID" -- bash -c "export RED5PRO_LICENSE_KEY='${RED5PRO_LICENSE_KEY}' && export RED5PRO_DOWNLOAD_URL='${RED5PRO_DOWNLOAD_URL}' && export RED5PRO_SSL_DOMAIN='${RED5PRO_SSL_DOMAIN}' && export RED5PRO_SSL_EMAIL='${RED5PRO_SSL_EMAIL}' && $(curl -fsSL ${INSTALL_SCRIPT_URL})"
+    # Export Red5 Pro environment variables and FUNCTIONS_FILE_PATH into the container
+    lxc-attach -n "$CTID" -- bash -c "export FUNCTIONS_FILE_PATH='${FUNCTIONS_FILE_PATH}' && export RED5PRO_LICENSE_KEY='${RED5PRO_LICENSE_KEY}' && export RED5PRO_DOWNLOAD_URL='${RED5PRO_DOWNLOAD_URL}' && export RED5PRO_SSL_DOMAIN='${RED5PRO_SSL_DOMAIN}' && export RED5PRO_SSL_EMAIL='${RED5PRO_SSL_EMAIL}' && $(curl -fsSL ${INSTALL_SCRIPT_URL})"
   else
     lxc-attach -n "$CTID" -- bash -c "$(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/install/${var_install}.sh)"
   fi
